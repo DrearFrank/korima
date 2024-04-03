@@ -1,0 +1,55 @@
+<div class="flex">
+<div class="p-4 shadow-2 border-round mr-4">
+  <div class="form-container">
+    <form [formGroup]="formularioUsers" (ngSubmit)="saveDataUser()" >
+      <div class="form-group">
+        <label for="nombre">nombre
+        <span style="color: red">*</span></label>
+        <input type="text" id="nombre" formControlName="nombre" pInputText/>
+      </div>
+      <div class="form-group">
+        <label for="apellido">apellido</label>
+        <input type="text" id="apellido" formControlName="apellido" pInputText/>
+      </div>
+      <div class="form-group">
+        <label for="apellido">email</label>
+        <input type="text" id="email" formControlName="email" pInputText/>
+      </div>
+      <div class="form-group">
+        <label for="edad">edad</label>
+        <input type="number" id="edad" formControlName="edad" pInputNumber/>
+      </div>
+      <button class="p-button-secondary" type="submit" [disabled]="formularioUsers.invalid">Guardar</button>
+    </form>
+  </div>
+</div>
+</div>
+
+
+
+<div class="flex-1 p-4 shadow-1 border-round">
+  <div class="card">
+    <p-table [rows]="4"
+             [paginator]="true"
+             [value]="users"
+             [tableStyle]="{ 'min-width': '10rem' , 'background-color': '#fff' }"
+             class="custom-table">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Codigo</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Edad</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-user>
+        <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.nombre }}</td>
+          <td>{{ user.apellido }}</td>
+          <td>{{ user.edad }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

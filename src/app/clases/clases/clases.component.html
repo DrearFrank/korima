@@ -1,0 +1,64 @@
+<div class="flex">
+  <div class="p-4 shadow-2 border-round mr-4">
+    <div class="form-container">
+      <form [formGroup]="formularioUsers" (ngSubmit)="saveDataUser()" >
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" formControlName="nombre" pInputText/>
+        </div>
+        <div class="form-group">
+          <label for="descripcion">Descripcíon</label>
+          <input type="text" id="descripcion" formControlName="descripcion" pInputText/>
+        </div>
+
+        <div class="form-group">
+          <label for="duracion">Duracíon</label>
+          <input type="text" id="duracion" formControlName="duracion" pInputText/>
+        </div>
+
+        <div class="form-group">
+          <label for="instructor">Instructor</label>
+          <input type="text" id="instructor" formControlName="instructor" pInputText/>
+        </div>
+        <div class="form-group">
+          <label for="nivel">Nivel</label>
+          <input type="number" id="nivel" formControlName="nivel" pInputNumber/>
+        </div>
+        <button class="p-button-secondary" type="submit" [disabled]="formularioUsers.invalid || formularioUsers.pristine">Guardar</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="flex-1 p-4 shadow-1 border-round">
+  <div class="card">
+    <p-table [rows]="4"
+             [paginator]="true"
+             [value]="clases"
+             [tableStyle]="{ 'min-width': '10rem' , 'background-color': '#fff' }"
+             class="custom-table">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Codigo</th>
+          <th>Nombre</th>
+          <th>Descripcíon</th>
+          <th>Duracíon</th>
+          <th>Instructor</th>
+          <th>Nivel</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-user>
+        <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.nombre }}</td>
+          <td>{{ user.descripcion}}</td>
+          <td>{{ user.duracion}}</td>
+          <td>{{ user.instructor}}</td>
+          <td>{{ user.nivel}}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+
